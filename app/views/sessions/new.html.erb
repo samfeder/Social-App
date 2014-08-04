@@ -1,0 +1,18 @@
+<h1>Sign in!</h1>
+<form action="<%= session_url %>" action="post">
+  <%= authenticity_token %>
+
+  <label>Email:
+    <input type="text" name="session[email]" value="<%= @user.email %>">
+  </label>
+  <br>
+
+  <label>Password:
+    <input type="password" name="session[password]" value="">
+  </label>
+  <br>
+
+  <button>Sign in</button>
+</form>
+
+<span>Not a user? Sign up <a href="<%= new_user_url %>">here</a>.</span>
