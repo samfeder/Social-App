@@ -8,6 +8,14 @@
 </head>
 <body>
   <%= render "layouts/flash_messages" %>
+  <% if signed_in? %>
+    <h3><%= current_user.email %></h3>
+    <form action="<%= session_url %>" method="post">
+      <%= authenticity_token %>
+      <input type="hidden" name="_method" value="delete">
+      <button>Sign out</button>
+    </form>
+  <% end %>
 
   <%= yield %>
 

@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
     foreign_key: :member_id,
     primary_key: :id
 
+  has_many :posts,
+    class_name: "Post",
+    foreign_key: :user_id,
+    primary_key: :id
+
   has_many :belonged_circles, through: :memberships, source: :circle
 
   after_initialize :ensure_session_token

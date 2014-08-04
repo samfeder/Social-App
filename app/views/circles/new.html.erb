@@ -12,8 +12,8 @@
   <% next if user == current_user %>
   <label>
     <input type="checkbox"
-     name="circle[member_id][]"
-     value="<%= user.id %>">
+           name="circle[member_ids][]"
+           value="<%= user.id %>">
    <%= user.email %>
   </label>
   <br>

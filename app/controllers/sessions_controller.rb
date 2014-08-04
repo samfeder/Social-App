@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out!
+    @user = User.new
     render :new
   end
 
