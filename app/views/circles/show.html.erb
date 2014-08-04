@@ -1,0 +1,9 @@
+<h1><%= @circle.name.capitalize %> Circle</h1>
+
+<ul>
+  <% @circle.members.each do |member| %>
+  <li><%= member.email %></li>
+  <% end %>
+</ul>
+
+<a href="<%= "#" %>">Edit circle</a>

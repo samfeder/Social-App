@@ -1,0 +1,9 @@
+<h1>Your circles</h1>
+
+<ul>
+  <% current_user.owned_circles.each do |circle| %>
+    <li><%= circle.name %></li>
+  <% end %>
+</ul>
+<br>
+<%= link_to "Create a new circle", action = new_user_circle_url  %>

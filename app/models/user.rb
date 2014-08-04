@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
-  has_many :owned_circles,
+  has_many :owned_circles, :inverse_of => :owner,
     class_name: "Circle",
     foreign_key: :owner_id,
     primary_key: :id
 
-  has_many :memberships,
+  has_many :memberships, :inverse_of => :member,
     class_name: "CircleMembership",
     foreign_key: :member_id,
     primary_key: :id
+
+  has_many :belonged_circles, through: :memberships, source: :circle
 
   after_initialize :ensure_session_token
 
@@ -21,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_credentials(email, password)
-    user = self.class.find_by_email(email)
+    user = self.find_by_email(email)
     (user && user.is_password?(password)) ? user : nil
   end
 
